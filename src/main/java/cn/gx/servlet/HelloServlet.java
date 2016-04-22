@@ -7,6 +7,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
 
@@ -25,20 +26,23 @@ public class HelloServlet extends HttpServlet {
 //
 //        }
 
-        try {
-            throw new Exception();
-        } catch (Throwable throwable) {
-            throwable.printStackTrace();
-        }
+        HttpSession session = request.getSession();
+        session.setAttribute("user","shaonan");
+        session.setAttribute("user","baijuan");
 
         PrintWriter writer = response.getWriter();
 
-        writer.write("hello");
+        writer.write("hello:"+session.getAttribute("user")+"-"+session.getId());
         writer.close();
 
-        request.getRequestDispatcher("result.jsp").forward(request,response);
+        response.sendRedirect("hello");
 
-        getServletContext().getRequestDispatcher("result.jsp").forward(request,response);
+        getServletContext();
+        getServletConfig();
+//
+//        request.getRequestDispatcher("result.jsp").forward(request,response);
+//
+//        getServletContext().getRequestDispatcher("result.jsp").forward(request,response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

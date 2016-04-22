@@ -8,4 +8,39 @@
         <param-name>admin</param-name>
         <param-value>shaonian</param-value>
     </context-param>
+
+    <!--欢迎页面,按顺序,找到第一个匹配的(不能以斜线开头或者结尾)-->
+    <welcome-file-list>
+        <welcome-file>index.jsp</welcome-file>
+        <welcome-file>shaonian.jsp</welcome-file>
+        <welcome-file>baijuan.jsp</welcome-file>
+    </welcome-file-list>
+
+    <!--普通型错误页面,以斜线开头-->
+    <error-page>
+        <exception-type>java.lang.Throwable</exception-type>
+        <location>/error.jsp</location>
+    </error-page>
+
+    <error-page>
+        <error-code>404</error-code>
+        <location>/error.jsp</location>
+    </error-page>
+
+    <!--servlet 元素在 servlet-mapping 元素的前面-->
+    <!--否则报:java.lang.IllegalStateException: No such servlet: DemoServlet-->
+
+    <servlet>
+        <servlet-name>DemoServlet</servlet-name>
+        <servlet-class>cn.gx.servlet.DemoServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>DemoServlet</servlet-name>
+        <url-pattern>/demo</url-pattern>
+    </servlet-mapping>
+
+
+
+
 </web-app>

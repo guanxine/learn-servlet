@@ -30,6 +30,7 @@ public class MyListener implements ServletContextListener,
 
         ServletContext servletContext = sce.getServletContext();
         String admin = servletContext.getInitParameter("admin");
+        servletContext.getInitParameter()
 
         //初始化一些配置应用....
 
@@ -63,6 +64,8 @@ public class MyListener implements ServletContextListener,
       /* This method is called when an attribute 
          is added to a session.
       */
+
+
     }
 
     public void attributeRemoved(HttpSessionBindingEvent sbe) {
